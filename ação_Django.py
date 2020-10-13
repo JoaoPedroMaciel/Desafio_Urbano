@@ -10,12 +10,20 @@ from processoApp.models import Processo
 
 with open('processos.csv', 'r') as csv_file :
 
-    ler = csv.reader(csv_file, delimiter =';', fieldnames =["pasta", "comarca", "uf"])
+    ler = csv.reader(csv_file, delimiter =';')
     next(ler)
-    for coluna in ler:
+    for colunas in ler:
         Processo.objects.all()
-        
-        print (coluna)
+        pasta = colunas[0]
+        comarca = colunas[1]
+        uf = colunas[2]
+        coluna = Processo(
+                          pasta = pasta,
+                          comarca = comarca,
+                          uf = uf,
+                          )
+        coluna.save()
+        print (coluna.pasta+" "+coluna.comarca +" "+coluna.uf)
         
         
         
